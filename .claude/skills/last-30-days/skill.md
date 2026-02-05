@@ -122,7 +122,7 @@ After presenting findings, save the research to a markdown file:
 1. **Generate filename**: Use the topic to create a descriptive filename (e.g., `ai-coding-assistants-research-2026.md`)
 2. **Add metadata**: Include the research date at the top of the file
 3. **Include full audit trail**: The saved file MUST include the complete audit trail tables so users can trace any insight back to its original source
-4. **Save location**: Save to `.claude/skills/last-30-days/output/`
+4. **Save location**: Save to `output/` in the project root directory
 5. **Confirm to user**: Let the user know where the file was saved
 
 ## Follow-up Application
