@@ -1,0 +1,36 @@
+
+https://gemini.google.com/app/5fa45b3a647f9876
+
+The "Last 30 Days" skill for Claude Code is a real-time research and prompt-optimization engine designed to bypass the latency of LLM training data by aggregating live intelligence from the web’s most volatile data sources.
+
+Core Architecture & Logic
+Data Sources: Aggregates trending data from X (via XAI API), Reddit (via OpenAI API), and the general web.
+
+Filtering: Strictly isolates content generated within the last 30 days to ensure the model operates on current "bleeding edge" trends, syntax, and sentiments.
+
+Function: Acts as a "knowledge injection" layer. It researches a topic, synthesizes the current best practices, and uses that synthesis to prime Claude's following actions, effectively turning it into an expert on ephemeral topics 01:39.
+
+Technical Requirements for Deployment
+Claude Code Access: Active subscription (recommended $20/mo tier minimum) 22:49.
+
+OpenAI API Key: Specifically for Reddit data access 04:19.
+
+XAI (Grok) API Key: Required for X/Twitter search capabilities; standard X user accounts are insufficient 04:39.
+
+High-Value Use Cases & Frameworks
+Cold Email Engineering: Surfacing and applying high-performance frameworks like AIDA (Attention, Interest, Desire, Action), The Three Ps (Praise, Picture, Push), and Intention Data Triggers based on what is currently breaking through noise 06:12.
+
+Competitive Intelligence: Researching unreleased or rapidly evolving tools (e.g., Moltbot) to identify technical gaps for enterprise-grade competitors 07:49.
+
+Design Vibe Research: Identifying specific UI/UX trends getting traction (e.g., Shopify "Winter Edition", YC landing pages) to generate high-fidelity Figma prompts or Nano Banana image specs 11:17.
+
+Growth Hacking: Identifying current platform-specific growth algorithms, such as the "40 thoughtful replies/day" strategy for X 07:04.
+
+Advanced Execution Workflow
+Compound Engineering Integration: The optimal stack involves using Last 30 Days for initial market/technical research, then piping that context into Compound Engineering to generate software architecture and project roadmaps 08:53.
+
+The "Vibe Coding" Loop: Matt Van Horn suggests a workflow where you don't even read the research. You prompt the skill to "learn kung fu" from the crowd, then immediately issue the build command based on that invisible expertise 13:22.
+
+Terminal Debugging Hack: For non-engineers, use ChatGPT as a troubleshooting co-pilot. Key insight: Control+V (not Command+V) allows you to paste screenshots of terminal errors directly into ChatGPT for instant debugging and code correction 23:42.
+
+Last 30 Days Skill Link Greg Isenberg YouTube Channel
