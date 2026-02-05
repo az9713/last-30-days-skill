@@ -48,12 +48,19 @@ claude
 
 ### Your First Research
 
-In Claude Code, type:
+In Claude Code, you can invoke the skill in two ways:
+
+**Option 1: Natural language**
+```
+Use last-30-days skill to research artificial intelligence trends
+```
+
+**Option 2: Slash command**
 ```
 /last-30-days artificial intelligence trends
 ```
 
-Claude will research the topic and present findings from X/Twitter, Reddit, and the web.
+Both methods work the same way. Claude will research the topic and present findings from X/Twitter, Reddit, and the web.
 
 ## Getting API Keys
 
