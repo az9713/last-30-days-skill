@@ -2,6 +2,8 @@
 
 A Claude Code skill that researches any topic using real-time data from X/Twitter, Reddit, and web sources. Get up-to-date insights, trends, and actionable takeaways from the last 30 days of online discussions.
 
+**No API keys or Python dependencies required.** Uses only built-in Claude Code tools (WebSearch, WebFetch).
+
 ## What This Project Does
 
 This skill allows you to:
@@ -20,13 +22,13 @@ This skill allows you to:
 - **Developers** learning about new technologies
 - **Anyone** who wants to understand what people are saying about a topic right now
 
-## Quick Start (5 Minutes)
+## Quick Start
 
 ### Prerequisites
 
-1. **Python 3.10+** installed on your computer
-2. **Claude Code CLI** installed ([installation guide](https://docs.anthropic.com/en/docs/claude-code))
-3. **API Keys** (see [Getting API Keys](#getting-api-keys) below)
+1. **Claude Code CLI** installed ([installation guide](https://docs.anthropic.com/en/docs/claude-code))
+
+That's it — no API keys, no Python, no pip install.
 
 ### Installation
 
@@ -35,14 +37,7 @@ This skill allows you to:
 git clone https://github.com/yourusername/last-30-days.git
 cd last-30-days
 
-# 2. Install Python dependencies
-pip install -r .claude/skills/last-30-days/scripts/requirements.txt
-
-# 3. Create your .env file with API keys
-cp .env.example .env
-# Edit .env and add your API keys (see Getting API Keys below)
-
-# 4. Start Claude Code in this directory
+# 2. Start Claude Code in this directory
 claude
 ```
 
@@ -62,26 +57,6 @@ Use last-30-days skill to research artificial intelligence trends
 
 Both methods work the same way. Claude will research the topic and present findings from X/Twitter, Reddit, and the web.
 
-## Getting API Keys
-
-### XAI API Key (for X/Twitter search)
-
-1. Go to https://console.x.ai
-2. Create an account or sign in
-3. Navigate to API Keys section
-4. Create a new API key
-5. Copy the key and add to your `.env` file as `XAI_API_KEY=your_key_here`
-6. Add credits to your account (required for API usage)
-
-### OpenAI API Key (for Reddit search)
-
-1. Go to https://platform.openai.com
-2. Create an account or sign in
-3. Navigate to API Keys (https://platform.openai.com/api-keys)
-4. Create a new secret key
-5. Copy the key and add to your `.env` file as `OPENAI_API_KEY=your_key_here`
-6. Add credits to your account (pay-as-you-go)
-
 ## Documentation
 
 | Document | Description |
@@ -100,15 +75,9 @@ last-30-days/
 ├── .claude/
 │   └── skills/
 │       └── last-30-days/
-│           ├── skill.md              # Skill definition
-│           └── scripts/
-│               ├── search_x.py       # X/Twitter search script
-│               ├── search_reddit.py  # Reddit search script
-│               ├── requirements.txt  # Python dependencies
-│               └── README.md         # Scripts documentation
+│           └── skill.md              # Skill definition
 ├── output/                           # Saved research results
 ├── docs/                             # Documentation
-├── .env.example                      # Example environment file
 ├── .gitignore                        # Git ignore rules
 ├── CLAUDE.md                         # Claude Code configuration
 └── README.md                         # This file
