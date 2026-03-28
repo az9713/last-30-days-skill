@@ -2,8 +2,8 @@
 name: last-30-days
 description: Research any topic from the last 30 days using X, Reddit, and web sources. Use when you need current trends, recent discussions, or up-to-date information on any subject.
 allowed-tools:
-  - Bash
   - WebSearch
+  - WebFetch
   - Read
   - Write
 ---
@@ -28,18 +28,16 @@ Research any topic using recent data from X/Twitter, Reddit, and web sources. Th
 
 Run all three searches simultaneously to gather comprehensive data:
 
-1. **X/Twitter Search** (via XAI Grok API):
-   ```bash
-   python .claude/skills/last-30-days/scripts/search_x.py "$ARGUMENTS"
-   ```
+1. **X/Twitter Search** (via WebSearch):
+   Use WebSearch: `$ARGUMENTS site:x.com OR site:twitter.com`
 
-2. **Reddit Search** (via OpenAI API):
-   ```bash
-   python .claude/skills/last-30-days/scripts/search_reddit.py "$ARGUMENTS"
-   ```
+2. **Reddit Search** (via WebSearch):
+   Use WebSearch: `$ARGUMENTS site:reddit.com`
 
 3. **Web Search** (via WebSearch tool):
    Use the WebSearch tool to find recent articles, blog posts, and discussions about the topic.
+
+After the searches, use WebFetch on the **3-5 most promising URLs** from the results to get deeper content and details.
 
 ### Phase 2: Synthesis
 
@@ -140,88 +138,4 @@ User: Write me cold emails for getting on Greg's podcast. I once made a smart ov
 
 ## Environment Requirements
 
-### API Keys
-
-The Python scripts require these environment variables:
-- `XAI_API_KEY`: API key for X.AI (Grok) - get from https://console.x.ai
-- `OPENAI_API_KEY`: API key for OpenAI
-
-Set these in a `.env` file in the project root or as system environment variables.
-
-### Python Dependencies
-
-Install required packages:
-```bash
-pip install -r .claude/skills/last-30-days/scripts/requirements.txt
-```
-
-Key dependencies:
-- `xai-sdk>=1.3.1` - Required for X/Twitter search (Agent Tools API)
-- `openai>=1.0.0` - Required for Reddit search
-- `python-dotenv>=1.0.0` - For loading environment variables
-
-## Troubleshooting
-
-### General Issues
-
-1. Ensure dependencies are installed: `pip install -r .claude/skills/last-30-days/scripts/requirements.txt`
-2. Verify API keys are set correctly
-3. Check API rate limits and quotas
-
-### X/Twitter Search Errors
-
-#### Error: "Your team doesn't have any credits or licenses"
-
-```
-PERMISSION_DENIED: Your newly created team doesn't have any credits or licenses yet.
-```
-
-**Solution**: Purchase credits at the xAI console URL provided in the error message.
-
-#### Error: "Live search is deprecated" (HTTP 410)
-
-```
-Error code: 410 - {'error': 'Live search is deprecated. Please switch to the Agent Tools API'}
-```
-
-**Background**: In late 2025, xAI deprecated the Live Search API (which used `search_parameters` in the Chat Completions endpoint) in favor of the new Agent Tools API (Responses API).
-
-**Solution**: The script has been updated to use the native `xai-sdk` package with the `x_search()` tool. Ensure you have `xai-sdk>=1.3.1` installed.
-
-#### Error: "unknown variant `search`, expected `function` or `live_search`"
-
-```
-Failed to deserialize the JSON body: tools[0].type: unknown variant `search`
-```
-
-**Background**: This error occurred when using the OpenAI-compatible endpoint with incorrect tool type values.
-
-**Solution**: The X/Twitter search now uses the native xAI SDK with the Responses API, which handles tool configuration automatically.
-
----
-
-## Changelog
-
-### 2026-02-04
-
-**X/Twitter Search Migration to Agent Tools API**
-
-- **Problem**: The original implementation used the OpenAI-compatible Chat Completions endpoint with `search_parameters`, which was deprecated by xAI in December 2025.
-
-- **Root Cause Analysis**:
-  1. Initial code used `"type": "search"` - invalid tool type
-  2. Changed to `"type": "live_search"` - missing required `sources` field
-  3. Added `search_parameters` with `sources` - but Chat Completions Live Search API returned HTTP 410 (deprecated)
-
-- **Solution**: Migrated from `openai` client to native `xai-sdk` package using the Responses API with `x_search()` agent tool.
-
-- **Changes**:
-  - Rewrote `scripts/search_x.py` to use `xai-sdk` Client and `x_search()` tool
-  - Added `xai-sdk>=1.3.1` to `requirements.txt`
-  - Updated model from `grok-3-latest` to `grok-4-1-fast` (recommended for agent tools)
-  - Added citation extraction for audit trail support
-
-**Other Updates**
-- Added audit trail system for source attribution
-- Created `output/` directory for saved research results
-- Added Phase 4 to workflow for automatic markdown export
+No API keys or Python dependencies required. This skill uses only built-in Claude Code tools (WebSearch, WebFetch).

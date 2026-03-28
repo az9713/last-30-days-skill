@@ -1,7 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(python .claude/skills/last-30-days/scripts/*.py *)"
-    ]
+    "allow": []
   }
 }
