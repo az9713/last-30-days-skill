@@ -32,8 +32,8 @@ This skill allows you to:
 
 ```bash
 # 1. Clone or download this repository
-git clone https://github.com/yourusername/last-30-days.git
-cd last-30-days
+git clone https://github.com/az9713/last-30-days-skill.git
+cd last-30-days-skill
 
 # 2. Install Python dependencies
 pip install -r .claude/skills/last-30-days/scripts/requirements.txt
@@ -73,6 +73,16 @@ Both methods work the same way. Claude will research the topic and present findi
 5. Copy the key and add to your `.env` file as `XAI_API_KEY=your_key_here`
 6. Add credits to your account (required for API usage)
 
+### Optional Xquik API Key (for X/Twitter search)
+
+Use Xquik when you want direct X/Twitter data from the Xquik REST API:
+
+1. Create an API key in the Xquik dashboard
+2. Add it to your `.env` file as `XQUIK_API_KEY=your_key_here`
+3. Set `LAST30DAYS_X_PROVIDER=xquik`
+
+Xquik is an independent third-party service. Not affiliated with X Corp. "Twitter" and "X" are trademarks of X Corp.
+
 ### OpenAI API Key (for Reddit search)
 
 1. Go to https://platform.openai.com
@@ -96,7 +106,7 @@ Both methods work the same way. Claude will research the topic and present findi
 ## Project Structure
 
 ```
-last-30-days/
+last-30-days-skill/
 ├── .claude/
 │   └── skills/
 │       └── last-30-days/
