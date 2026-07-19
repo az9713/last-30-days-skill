@@ -28,10 +28,17 @@ Research any topic using recent data from X/Twitter, Reddit, and web sources. Th
 
 Run all three searches simultaneously to gather comprehensive data:
 
-1. **X/Twitter Search** (via XAI Grok API):
+1. **X/Twitter Search** (via XAI Grok API by default):
    ```bash
    python .claude/skills/last-30-days/scripts/search_x.py "$ARGUMENTS"
    ```
+
+   If `LAST30DAYS_X_PROVIDER=xquik`, use the Xquik REST API instead:
+   ```bash
+   python .claude/skills/last-30-days/scripts/search_xquik.py "$ARGUMENTS"
+   ```
+
+   Xquik is an independent third-party service. Not affiliated with X Corp. "Twitter" and "X" are trademarks of X Corp.
 
 2. **Reddit Search** (via OpenAI API):
    ```bash
@@ -144,6 +151,8 @@ User: Write me cold emails for getting on Greg's podcast. I once made a smart ov
 
 The Python scripts require these environment variables:
 - `XAI_API_KEY`: API key for X.AI (Grok) - get from https://console.x.ai
+- `XQUIK_API_KEY`: optional API key for Xquik X/Twitter data search
+- `LAST30DAYS_X_PROVIDER`: optional provider selector, `xai` or `xquik`
 - `OPENAI_API_KEY`: API key for OpenAI
 
 Set these in a `.env` file in the project root or as system environment variables.
@@ -157,6 +166,7 @@ pip install -r .claude/skills/last-30-days/scripts/requirements.txt
 
 Key dependencies:
 - `xai-sdk>=1.3.1` - Required for X/Twitter search (Agent Tools API)
+- `requests>=2.31.0` - Required for optional Xquik REST API search
 - `openai>=1.0.0` - Required for Reddit search
 - `python-dotenv>=1.0.0` - For loading environment variables
 
